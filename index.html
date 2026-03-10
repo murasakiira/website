@@ -259,13 +259,18 @@
           if (cycleLoopStarted || !cycleCanvas) return;
           cycleLoopStarted = true;
 
-          var ctx = cycleCanvas.getContext("2d");
+          var ctx = cycleCanvas.getContext("2d", { desynchronized: true });
           if (!ctx) return;
 
           var grid = 40;
           var colors = ["#9b6cff", "#b07cff", "#8e5fff", "#a874ff"];
           var cycles = [];
-          var maxTrail = 190;
+          var lowPowerDevice =
+            (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) ||
+            (navigator.deviceMemory && navigator.deviceMemory <= 4);
+          var cycleCount = lowPowerDevice ? 2 : 3;
+          var maxTrail = lowPowerDevice ? 60 : 90;
+          var targetFrameInterval = lowPowerDevice ? 1000 / 30 : 1000 / 45;
           var lastTs = 0;
 
           function resizeCanvas() {
@@ -289,6 +294,7 @@
               speed: 95 + Math.random() * 35,
               color: colors[Math.floor(Math.random() * colors.length)],
               trail: [],
+              trailTick: 0,
             };
           }
 
@@ -320,8 +326,11 @@
               turnCycle(cycle);
             }
 
-            cycle.trail.push({ x: cycle.x, y: cycle.y });
-            if (cycle.trail.length > maxTrail) cycle.trail.shift();
+            cycle.trailTick = (cycle.trailTick + 1) % 2;
+            if (cycle.trailTick === 0) {
+              cycle.trail.push({ x: cycle.x, y: cycle.y });
+              if (cycle.trail.length > maxTrail) cycle.trail.shift();
+            }
           }
 
           function drawCycle(cycle) {
@@ -332,10 +341,10 @@
               var jumpX = Math.abs(p2.x - p1.x);
               var jumpY = Math.abs(p2.y - p1.y);
               ctx.strokeStyle = cycle.color;
-              ctx.globalAlpha = 0.03 + fade * 0.5;
-              ctx.lineWidth = 2.2;
+              ctx.globalAlpha = 0.04 + fade * 0.42;
+              ctx.lineWidth = 2;
               ctx.shadowColor = cycle.color;
-              ctx.shadowBlur = 9;
+              ctx.shadowBlur = 2;
 
               if (jumpX > cycleCanvas.width / 2) {
                 var edgeX1 = p1.x < p2.x ? 0 : cycleCanvas.width;
@@ -370,15 +379,24 @@
             ctx.globalAlpha = 1;
             ctx.fillStyle = cycle.color;
             ctx.shadowColor = cycle.color;
-            ctx.shadowBlur = 8;
+            ctx.shadowBlur = 3;
             ctx.beginPath();
             ctx.arc(cycle.x, cycle.y, 2.5, 0, Math.PI * 2);
             ctx.fill();
           }
 
           function loop(ts) {
-            if (!lastTs) lastTs = ts;
-            var dt = (ts - lastTs) / 1000;
+            if (!lastTs) {
+              lastTs = ts;
+              requestAnimationFrame(loop);
+              return;
+            }
+            var frameElapsed = ts - lastTs;
+            if (frameElapsed < targetFrameInterval) {
+              requestAnimationFrame(loop);
+              return;
+            }
+            var dt = frameElapsed / 1000;
             lastTs = ts;
 
             ctx.clearRect(0, 0, cycleCanvas.width, cycleCanvas.height);
@@ -393,7 +411,7 @@
 
           resizeCanvas();
           window.addEventListener("resize", resizeCanvas);
-          cycles.push(randomCycle(), randomCycle(), randomCycle(), randomCycle(), randomCycle());
+          for (var i = 0; i < cycleCount; i++) cycles.push(randomCycle());
           requestAnimationFrame(loop);
         }
 
