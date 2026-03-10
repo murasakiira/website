@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to my website :)</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <canvas
+      id="cycleCanvas"
+      class="cycle-canvas"
+      aria-hidden="true"
+    ></canvas>
+
+    <div class="loading-wrapper">
+      <div class="terminal-ui">
+        <div class="loading-text" id="loadingText"></div>
+        <div class="welcome-box" id="welcomeBox" aria-hidden="true">
+          <div class="welcome-header">
+            <span id="headerText"></span>
+            <svg
+              class="welcome-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.99854 7.00153L12.0006 17.0027L21.0027 7.00153"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+
+          <div class="link-list">
+            <a
+              class="link-item"
+              href="https://steamcommunity.com/id/murasakira/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="link-prompt">&gt;</span>
+              <span class="link-label">Steam</span>
+            </a>
+
+            <a
+              class="link-item"
+              href="https://www.instagram.com/murasakira1/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="link-prompt">&gt;</span>
+              <span class="link-label">Instagram</span>
+            </a>
+
+            <a
+              class="link-item"
+              href="https://www.youtube.com/@murasakira"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="link-prompt">&gt;</span>
+              <span class="link-label">YouTube</span>
+            </a>
+
+            <a
+              class="link-item"
+              href="https://github.com/murasakiira"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="link-prompt">&gt;</span>
+              <span class="link-label">Github</span>
+            </a>
+
+            <button
+              type="button"
+              class="link-item link-discord"
+              id="discordButton"
+            >
+              <span class="link-prompt">&gt;</span>
+              <span class="link-label">Discord: murasakira</span>
+            </button>
+
+          </div>
+
+          <div class="box-divider" id="boxDivider" aria-hidden="true"></div>
+          <div class="welcome-header personal-info-title" id="personalInfoTitle">
+            <span id="personalInfoText"></span>
+            <svg
+              class="welcome-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.99854 7.00153L12.0006 17.0027L21.0027 7.00153"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+
+          <div class="personal-info-details" id="personalInfoDetails">
+            <div class="info-row">
+              <span class="info-prompt">&gt;</span>
+              <span class="info-key">name:</span>
+              <span class="info-value">Diogo</span>
+            </div>
+            <div class="info-row">
+              <span class="info-prompt">&gt;</span>
+              <span class="info-key">from:</span>
+              <span class="info-value">CH</span>
+            </div>
+            <div class="info-row">
+              <span class="info-prompt">&gt;</span>
+              <span class="info-key">interests:</span>
+              <span class="info-value">music, gaming, I.T.</span>
+            </div>
+            <div class="info-row">
+              <span class="info-prompt">&gt;</span>
+              <span class="info-key">fav game:</span>
+              <span class="info-value">The Last of Us</span>
+            </div>
+            <div class="info-row">
+              <span class="info-prompt">&gt;</span>
+              <span class="info-key">fav movie:</span>
+              <span class="info-value">Tron: Legacy</span>
+            </div>
+          </div>
+          <div class="info-divider" id="infoDivider" aria-hidden="true"></div>
+
+          <div class="pc-section" id="pcSection">
+            <div class="welcome-header pc-title">
+              <span id="pcTitleText"></span>
+            </div>
+            <div class="pc-details" id="pcDetails">
+              <div class="pc-row">
+                <span class="pc-prompt">&gt;</span>
+                <span class="pc-key">MB:</span>
+                <span class="pc-value">asus strix b850-e</span>
+              </div>
+              <div class="pc-row">
+                <span class="pc-prompt">&gt;</span>
+                <span class="pc-key">cpu:</span>
+                <span class="pc-value">Ryzen 7 7800X3D</span>
+              </div>
+              <div class="pc-row">
+                <span class="pc-prompt">&gt;</span>
+                <span class="pc-key">RAM:</span>
+                <span class="pc-value">trident z5 neo 32GB</span>
+              </div>
+              <div class="pc-row">
+                <span class="pc-prompt">&gt;</span>
+                <span class="pc-key">GPU:</span>
+                <span class="pc-value">RTX 4070 Ti Super</span>
+              </div>
+              <div class="pc-row">
+                <span class="pc-prompt">&gt;</span>
+                <span class="pc-key">OS:</span>
+                <span class="pc-value">Arch Linux</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="copy-toast" id="copyToast" aria-hidden="true"></div>
+
+    <script>
+      (function () {
+        var el = document.getElementById("loadingText");
+        var box = document.getElementById("welcomeBox");
+        var header = document.getElementById("headerText");
+        var discordBtn = document.getElementById("discordButton");
+        var divider = document.getElementById("boxDivider");
+        var personalInfoTitle = document.getElementById("personalInfoTitle");
+        var personalInfoText = document.getElementById("personalInfoText");
+        var personalInfoDetails = document.getElementById("personalInfoDetails");
+        var infoDivider = document.getElementById("infoDivider");
+        var infoRows = document.querySelectorAll(".info-row");
+        var pcSection = document.getElementById("pcSection");
+        var pcTitleText = document.getElementById("pcTitleText");
+        var pcDetails = document.getElementById("pcDetails");
+        var pcRows = document.querySelectorAll(".pc-row");
+        var toast = document.getElementById("copyToast");
+        var links = document.querySelectorAll(".link-item");
+        var cycleCanvas = document.getElementById("cycleCanvas");
+        if (!el) return;
+
+        var initialText = "Connecting to the Grid...";
+        var loadingText = "loading...";
+        var welcomeText = "Welcome User";
+        var socialsTitle = "My Socials";
+        var typeSpeed = 90;
+        var holdTime = 2000;
+        var cycleLoopStarted = false;
+        var toastTimeout;
+
+        function typeText(target, text, i, cb, hold) {
+          if (!target) return;
+          if (typeof hold === "undefined") hold = holdTime;
+          if (i <= text.length) {
+            target.textContent = text.slice(0, i);
+            setTimeout(function () {
+              typeText(target, text, i + 1, cb, hold);
+            }, typeSpeed);
+          } else if (cb) {
+            setTimeout(cb, hold);
+          }
+        }
+
+        function revealRows(rows, delayStep) {
+          for (var i = 0; i < rows.length; i++) {
+            (function (idx) {
+              setTimeout(function () {
+                rows[idx].classList.add("show");
+              }, idx * delayStep);
+            })(i);
+          }
+        }
+
+        function showToast(message) {
+          if (!toast) return;
+          toast.textContent = message;
+          toast.classList.add("show");
+          toast.setAttribute("aria-hidden", "false");
+          if (toastTimeout) clearTimeout(toastTimeout);
+          toastTimeout = setTimeout(function () {
+            toast.classList.remove("show");
+            toast.setAttribute("aria-hidden", "true");
+          }, 3000);
+        }
+
+        function startCycleLoop() {
+          if (cycleLoopStarted || !cycleCanvas) return;
+          cycleLoopStarted = true;
+
+          var ctx = cycleCanvas.getContext("2d");
+          if (!ctx) return;
+
+          var grid = 40;
+          var colors = ["#9b6cff", "#b07cff", "#8e5fff", "#a874ff"];
+          var cycles = [];
+          var maxTrail = 190;
+          var lastTs = 0;
+
+          function resizeCanvas() {
+            cycleCanvas.width = window.innerWidth;
+            cycleCanvas.height = window.innerHeight;
+          }
+
+          function randomCycle() {
+            var directions = [
+              { x: 1, y: 0 },
+              { x: -1, y: 0 },
+              { x: 0, y: 1 },
+              { x: 0, y: -1 },
+            ];
+            var d = directions[Math.floor(Math.random() * directions.length)];
+            return {
+              x: Math.floor(Math.random() * (cycleCanvas.width / grid)) * grid,
+              y: Math.floor(Math.random() * (cycleCanvas.height / grid)) * grid,
+              dx: d.x,
+              dy: d.y,
+              speed: 95 + Math.random() * 35,
+              color: colors[Math.floor(Math.random() * colors.length)],
+              trail: [],
+            };
+          }
+
+          function turnCycle(cycle) {
+            if (cycle.dx !== 0) {
+              cycle.dx = 0;
+              cycle.dy = Math.random() < 0.5 ? -1 : 1;
+            } else {
+              cycle.dy = 0;
+              cycle.dx = Math.random() < 0.5 ? -1 : 1;
+            }
+          }
+
+          function updateCycle(cycle, dt) {
+            cycle.x += cycle.dx * cycle.speed * dt;
+            cycle.y += cycle.dy * cycle.speed * dt;
+
+            if (cycle.x < 0) cycle.x = cycleCanvas.width;
+            if (cycle.x > cycleCanvas.width) cycle.x = 0;
+            if (cycle.y < 0) cycle.y = cycleCanvas.height;
+            if (cycle.y > cycleCanvas.height) cycle.y = 0;
+
+            var onGridX = Math.abs(cycle.x % grid) < 1 || Math.abs(cycle.x % grid) > grid - 1;
+            var onGridY = Math.abs(cycle.y % grid) < 1 || Math.abs(cycle.y % grid) > grid - 1;
+
+            if (onGridX && onGridY && Math.random() < 0.03) {
+              cycle.x = Math.round(cycle.x / grid) * grid;
+              cycle.y = Math.round(cycle.y / grid) * grid;
+              turnCycle(cycle);
+            }
+
+            cycle.trail.push({ x: cycle.x, y: cycle.y });
+            if (cycle.trail.length > maxTrail) cycle.trail.shift();
+          }
+
+          function drawCycle(cycle) {
+            for (var i = 1; i < cycle.trail.length; i++) {
+              var p1 = cycle.trail[i - 1];
+              var p2 = cycle.trail[i];
+              var fade = (i / cycle.trail.length) ** 2;
+              var jumpX = Math.abs(p2.x - p1.x);
+              var jumpY = Math.abs(p2.y - p1.y);
+              ctx.strokeStyle = cycle.color;
+              ctx.globalAlpha = 0.03 + fade * 0.5;
+              ctx.lineWidth = 2.2;
+              ctx.shadowColor = cycle.color;
+              ctx.shadowBlur = 9;
+
+              if (jumpX > cycleCanvas.width / 2) {
+                var edgeX1 = p1.x < p2.x ? 0 : cycleCanvas.width;
+                var edgeX2 = p1.x < p2.x ? cycleCanvas.width : 0;
+                ctx.beginPath();
+                ctx.moveTo(p1.x, p1.y);
+                ctx.lineTo(edgeX1, p1.y);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(edgeX2, p2.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.stroke();
+              } else if (jumpY > cycleCanvas.height / 2) {
+                var edgeY1 = p1.y < p2.y ? 0 : cycleCanvas.height;
+                var edgeY2 = p1.y < p2.y ? cycleCanvas.height : 0;
+                ctx.beginPath();
+                ctx.moveTo(p1.x, p1.y);
+                ctx.lineTo(p1.x, edgeY1);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(p2.x, edgeY2);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.stroke();
+              } else {
+                ctx.beginPath();
+                ctx.moveTo(p1.x, p1.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.stroke();
+              }
+            }
+
+            ctx.globalAlpha = 1;
+            ctx.fillStyle = cycle.color;
+            ctx.shadowColor = cycle.color;
+            ctx.shadowBlur = 8;
+            ctx.beginPath();
+            ctx.arc(cycle.x, cycle.y, 2.5, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          function loop(ts) {
+            if (!lastTs) lastTs = ts;
+            var dt = (ts - lastTs) / 1000;
+            lastTs = ts;
+
+            ctx.clearRect(0, 0, cycleCanvas.width, cycleCanvas.height);
+            ctx.globalCompositeOperation = "lighter";
+            for (var i = 0; i < cycles.length; i++) {
+              updateCycle(cycles[i], dt);
+              drawCycle(cycles[i]);
+            }
+            ctx.globalCompositeOperation = "source-over";
+            requestAnimationFrame(loop);
+          }
+
+          resizeCanvas();
+          window.addEventListener("resize", resizeCanvas);
+          cycles.push(randomCycle(), randomCycle(), randomCycle(), randomCycle(), randomCycle());
+          requestAnimationFrame(loop);
+        }
+
+        function revealPersonalAndPc() {
+          if (personalInfoDetails) personalInfoDetails.classList.add("show");
+          if (infoDivider) infoDivider.classList.add("show");
+          revealRows(infoRows, 130);
+
+          if (pcSection) pcSection.classList.add("show");
+          typeText(
+            pcTitleText,
+            "my pc",
+            1,
+            function () {
+              if (pcDetails) pcDetails.classList.add("show");
+              revealRows(pcRows, 150);
+            },
+            0
+          );
+        }
+
+        function revealPersonalTitle() {
+          if (!personalInfoTitle) return;
+          personalInfoTitle.classList.add("show");
+          typeText(personalInfoText, "personal info", 1, revealPersonalAndPc, 0);
+        }
+
+        function revealLinksAndBelow() {
+          for (var i = 0; i < links.length; i++) {
+            (function (index) {
+              setTimeout(function () {
+                links[index].classList.add("show");
+                if (index === links.length - 1 && divider) {
+                  setTimeout(function () {
+                    divider.classList.add("show");
+                    setTimeout(revealPersonalTitle, 420);
+                  }, 100);
+                }
+              }, index * 120);
+            })(i);
+          }
+        }
+
+        if (discordBtn && navigator.clipboard) {
+          discordBtn.addEventListener("click", function () {
+            navigator.clipboard
+              .writeText("murasakira")
+              .then(function () {
+                showToast('username copied successfully (۶•̀ᴗ•́)۶');
+              })
+              .catch(function () {
+                showToast("couldn't copy username, sorry");
+              });
+          });
+        }
+
+        typeText(el, initialText, 1, function () {
+          el.textContent = "";
+          typeText(el, loadingText, 1, function () {
+            el.textContent = "";
+            typeText(el, welcomeText, 1, function () {
+              if (!box) return;
+              document.body.classList.add("grid-on");
+              startCycleLoop();
+              box.classList.add("show");
+              box.setAttribute("aria-hidden", "false");
+              typeText(header, socialsTitle, 1, revealLinksAndBelow, 0);
+            }, 0);
+          }, 3000);
+        });
+      })();
+    </script>
+  </body>
+</html>
